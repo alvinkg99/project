@@ -1,0 +1,100 @@
+{%extends 'base.html'%}
+{% block content %}
+    {%load static%}
+    <link rel="stylesheet"href="https://fonts.googleapis.com/css?family=Roboto:400,700"
+    />
+    <!-- https://fonts.google.com/specimen/Roboto -->
+    <link rel="stylesheet" href="{% static 'admin/css/fontawesome.min.css'%}" />
+    <!-- https://fontawesome.com/ -->
+    <link rel="stylesheet" href="{% static 'admin/css/bootstrap.min.css'%}" />
+    <!-- https://getbootstrap.com/ -->
+    <link rel="stylesheet" href="{% static 'admin/css/templatemo-style.css'%}">
+    <!--
+	Product Admin CSS Template
+	https://templatemo.com/tm-524-product-admin
+	-->
+  
+        <!-- row -->
+        
+          <div class="tm-block tm-account-settings">
+            <div class="tm-bg-primary-dark tm-block tm-block-settings">
+              <h2 class="tm-block-title">Account Settings</h2>
+              <form action="" class="tm-signup-form row">
+                <div class="form-group col-lg-3">
+                  <div>
+                    <img src="{{p.propic.url}}" alt="" style="height: 100px; width: 100px;">
+                  </div>
+                </div>
+                <div class="form-group col-lg-3">
+                  <label for="name">Name</label>
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    value="{{usr.first_name}}"
+                    class="form-control validate"
+                    disabled
+                    style="background-color: #ff61d8; font-weight: bold"
+                  />
+                </div>
+                <div class="form-group col-lg-3">
+                  <label for="email">Email</label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    class="form-control validate"
+                    value="{{usr.email}}"
+                    disabled
+                    style="background-color: #ff61d8; font-weight: bold"
+                  />
+                </div>
+                
+                <div class="form-group col-lg-3">
+                  <label for="phone">Phone</label>
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    class="form-control validate"
+                    value="{{usr.last_name}}"
+                    disabled
+                    style="background-color: #ff61d8; font-weight: bold"
+                  />
+                </div>
+                <!-- <div class="form-group col-lg-6">
+                  <label class="tm-hide-sm">&nbsp;</label>
+                  <a class="btn btn-primary btn-block text-uppercase"href="editprofile">
+                    edit Your Profile
+                  </a>
+                </div> -->
+                <div class="form-group mb-3 col-xs-12 col-sm-3">
+                  <label class="tm-hide-sm">Profile Picture</label>
+                  <a class="btn btn-primary btn-block text-uppercase" hidden href="preset">
+                   CHANGE PASSWORD</a>                    
+                </div>
+                <div class="form-group mb-3 col-xs-12 col-sm-6">
+                  <label class="tm-hide-sm">&nbsp;</label>
+                  <a class="btn btn-primary btn-block text-uppercase"href="preset">
+                   CHANGE PASSWORD</a>                    
+                </div>
+              
+                <div class="col-12">
+                  <a class="btn btn-primary btn-block text-uppercase"href="editprofile">
+                    EDIT YOUR ACCOUNT
+                  </a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+
+    <script src="{% static 'admin/js/jquery-3.3.1.min.js'%}"></script>
+    <!-- https://jquery.com/download/ -->
+    <script src="{% static 'admin/js/bootstrap.min.js'%}"></script>
+    <!-- https://getbootstrap.com/ -->
+  
+    {% endblock %}

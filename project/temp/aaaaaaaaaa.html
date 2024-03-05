@@ -1,0 +1,37 @@
+def signup(l2):
+    if l2.method == 'POST':
+        n = l2.POST.get('name')
+        e = l2.POST.get('email')
+        ph = l2.POST.get('phone')
+        u = l2.POST.get('username')
+        p = l2.POST.get('password')
+        p2 = l2.POST.get('repassword')
+        if p == p2:
+            if usersignup.objects.filter(username=u).exists():
+                messages.info(l2,"Username already exists",extra_tags="signup")
+                return redirect(signup) 
+            elif usersignup.objects.filter(email=e).exists():
+                messages.info(l2,"Email already exists",extra_tags="signup")
+                return redirect(signup)  
+            else:
+                try:
+                    y=re.search("(?=.{8,})(?=.\d)(?=.[A-Z])(?=.[a-z])(?=.[~!@#$%^&*?])",p)
+                    x=re.findall(r'^[6-9][0-9]{9}',ph)
+                    if x==[ph]:
+                        if y==None:
+                            messages.info(l2,"Password is not strong",extra_tags="signup")
+                            return redirect(signup)
+                        else:
+                            val=usersignup.objects.create(name=n,email=e,phone=ph,username=u,password=p)
+                            val.save()  
+                            return redirect(login) 
+                    else:
+                        messages.info(l2,"Not a valid phone number",extra_tags="signup")
+                        return redirect(signup)
+                except:
+                    messages.info(l2,"Invalid input",extra_tags="signup")
+        else:
+            messages.info(l2,"Password doesn't match",extra_tags="signup")
+            return redirect(signup) 
+
+    return render(l2,'login.html')

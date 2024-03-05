@@ -1,0 +1,50 @@
+{%extends 'base.html'%}
+{% block content %}
+{%load static%} 
+    
+<section class="glass_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+         <span>search</span> result
+        </h2>
+      </div>
+      
+      <div class="glass_container">
+        {% for i in obj %}
+        <div class="box">
+          <div class="img-box">
+            <a href="prodet/{{i.id}}"><img src="{{i.image.url}}" alt=""></a>
+          </div>
+          <div class="price">
+            <h3>
+              {{i.name}}
+            </h3>
+            <h5>
+              {{i.model}}
+            </h5>
+            <h6>
+              <p style="color: greenyellow;"></p><del style="color: red;">₹{{i.price}}</del><br>₹{{i.discount}} off</p></h6>
+            {% if request.session.id %}
+            {% for j in request.session.id %}
+            <form action="prodet/addcart/{{j}}/{{i.id}}" method="post">
+              {% csrf_token %}
+            <input type="submit" value="add to cart">
+          </form>
+               {% endfor %}
+          {% else %}
+          <a href="{% url 'cart' %}">Add To Cart</a>
+          {% endif %}
+          </div>
+        </div>
+      
+      {% endfor %}
+    </div>
+      <div class="btn-box">
+        <a href="">
+          See More
+        </a>
+      </div>
+    </div>
+  </section>
+    {% endblock %}

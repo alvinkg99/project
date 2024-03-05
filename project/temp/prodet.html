@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{%load static%}
+
+    <div class="bg-light py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mb-0">  <strong class="text-black">{{l.name}}</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-5 mr-auto">
+            <div class="border text-center">
+              <img src="{{l.image.url}}" alt="Image" class="img-fluid p-5">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <h4 class="text-black">{{l.name}}</h4>
+            <h2 class="text-black">{{l.model}}</h2>
+            <h6 class="text-black">color  :{{l.color}}</h6>
+            
+            <p>{{l.description}}</p>
+            
+
+            <p><del style="color: red;">₹{{l.price}}</del>  <strong class="text-primary h4">{{l.discount}}</strong></p>
+
+            <p>
+            {% if request.session.id %}
+          
+            {% for j in request.session.id %}
+            {% if l.id in ca %}
+
+            <a href="{% url 'cart' %}"><input type="submit" value="Go to cart"></a>
+            {% else %}
+            <form action="addcart/{{l.id}}" method="post">
+              {% csrf_token %}
+              <input type="hidden" id="hi" name="hi" value="">
+             <input style="background-color: #eb19b7; color: aliceblue;" type="submit" value="Add to cart" class="buy-now btn btn-sm height-auto px-4 py-3 ">      
+            </form>
+            {% endif %}
+
+            <script>
+              document.getElementById('q').addEventListener('input',function(){
+                document.getElementById('hi').value=this.value;
+              })
+            </script>
+            {% if l.id in wa %}
+
+            <a href="{% url 'wishlist'%}"><input type="submit" value="Go to wishlist"></a>
+            {% else %}
+            <form action="addwish/{{l.id}}" method="post">
+              {% csrf_token %}
+             <input style="background-color: #f1a0dd; color: #eb19b7;" type="submit" value="&hearts;" class="buy-now btn btn-sm height-auto px-3 py-2 ">      
+            </form>
+            {% endif %}
+
+            {% endfor %}
+            {% else %}
+            <a class="cart" href="{% url 'cartt'%}" class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary">Add To Cart</a>
+
+            {% endif %}
+          </p>
+
+
+            <div class="mt-5">
+              
+            
+              </ul>
+              <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                  <table class="table custom-table" border="2px">
+                    <thead>
+                      
+                      <th>Description</th>
+                    
+                    </thead>
+                    <tbody>
+                      <tr>
+                        
+                        <td>{{l.discription}}</td>
+                        
+                      </tr>
+                      
+                      
+                    </tbody>
+                  </table>
+                </div>
+                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+            
+                  
+            
+                </div>
+            
+              </div>
+            </div>
+
+    
+          </div>
+        </div>
+      </div>
+    </div>
+
+   
+ {% endblock %}

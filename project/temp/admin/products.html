@@ -1,0 +1,114 @@
+{%extends 'admin/base2.html'%}
+{% block content %}
+    {%load static%}
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Product Page - Admin HTML Template</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700"/>
+    <!-- https://fonts.google.com/specimen/Roboto -->
+    <link rel="stylesheet" href="{% static 'admin/css/fontawesome.min.css'%}" />
+    <!-- https://fontawesome.com/ -->
+    <link rel="stylesheet" href="{% static 'admin/css/bootstrap.min.css'%}" />
+    <!-- https://getbootstrap.com/ -->
+    <link rel="stylesheet" href="{% static 'admin/css/templatemo-style.css'%}">
+    <!--
+	Product Admin CSS Template
+	https://templatemo.com/tm-524-product-admin
+	-->
+
+  
+
+  
+  
+    <!-- <div class="container mt-5"> -->
+      <!-- <div class="row tm-content-row"> -->
+        <!-- <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 tm-block-col"> -->
+          <div class="tm-bg-primary-dark tm-block tm-block-products">
+            <div class="tm-product-table-container">
+              <table class="table table-hover tm-table-small tm-product-table">
+                <thead>
+                  
+                  <tr>
+                    <th scope="col">PHOTO</th>
+                    <th scope="col">PRODUCT NAME</th>
+                    <!-- <th scope="col">UNIT SOLD</th>
+                    <th scope="col">IN STOCK</th> -->
+                    <th scope="col">PRIZE</th>
+                    <th scope="col">&nbsp;</th>
+                    <th scope="col">&nbsp;</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for i in l %}
+                  <tr>
+                    
+                    <td class="tm-product-name"><img style="height: 40px; width: 50px;" src="{{i.image.url}}" alt=""></td>
+                    <td class="tm-product-name">{{i.model}}</td>
+                    <!-- <td>0</td>
+                    <td>{{i.quantity}} </td> -->
+                    <td>{{i.discount}}</td>
+                    
+                    <td><a href="editproducts/{{i.id}}"><i class="fas fa-edit tm-product-delete-icon"></i></td></a>
+                    <td>
+                      
+                    </td>
+                    <!-- <td>
+                      <a href="delpro/{{i.id}}" class="tm-product-delete-link">
+                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                      </a>
+                    </td> -->
+                  </tr>
+                </a>
+                  {% endfor %}
+
+                  
+                </tbody>
+              </table>
+            </div>
+            <!-- table container -->
+            <a
+              href="addproducts"
+              class="btn btn-primary btn-block text-uppercase mb-3">Add new product</a>
+            
+          </div>
+        </div>
+      </div>
+        <!-- <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 tm-block-col">
+          <div class="tm-bg-primary-dark tm-block tm-block-product-categories">
+            <h2 class="tm-block-title">Product Categories</h2>
+            <div class="tm-product-table-container">
+              <table class="table tm-table-small tm-product-table">
+                <tbody>
+                  {% for i in obj %}
+                  <tr>
+                    <td class="tm-product-name">{{i.categorychoices}}</td>
+                    <td class="text-center">
+                      <a href="#" class="tm-product-delete-link">
+                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                      </a>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                  
+                </tbody>
+              </table>
+            </div> -->
+            <!-- table container -->
+            <!-- <button class="btn btn-primary btn-block text-uppercase mb-3">
+              Add new category
+            </button>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    
+
+    <script src="{% static 'admin/js/jquery-3.3.1.min.js'%}"></script>
+    <!-- https://jquery.com/download/ -->
+    <script src="{% static 'admin/js/bootstrap.min.js'%}"></script>
+    <!-- https://getbootstrap.com/ -->
+    
+ {% endblock %}

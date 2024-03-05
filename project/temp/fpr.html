@@ -1,0 +1,61 @@
+{%extends 'base.html'%}
+{% block content %}
+{%load static%}
+<link rel="stylesheet" href="{% static 'css/login.css'%}">
+<div>
+<div class="wrapper">
+  <div class="title-text">
+     <div class="title signup">
+      <h1>Enter new password</h1>
+      <h6>Please enter your new password twice so we can verify you typed it in correctly.</h6>
+</div>
+  </div>
+     <div class="form-inner">
+        <form  class="form" method="post">
+         {% csrf_token %} 
+         <div class="field">
+          <input type="password" placeholder="password" name="new_password1" required>
+       </div>
+      <ul>
+        <li>Your password can’t be too similar to your other personal information.</li>
+        <li>Your password must contain at least 8 characters.</li>
+        <li>Your password can’t be a commonly used password.</li>
+        <li>Your password can’t be entirely numeric.</li>
+      </ul>
+        <div class="field">
+          <input type="password" placeholder="confirm password" name="new_password2" required>
+        </div>
+           {% for msg in messages %}
+				<div class="group" style="text-align: center;">
+					<label for="pass" class="label" style="color: red;">{{msg}}</label>
+				</div>
+				{% endfor %}
+           <div class="field btn">
+              <div class="btn-layer"></div>
+              <input type="submit" value="reset password">
+           </div>
+        </form>
+     </div>
+  </div>
+</div>
+<script>
+ const loginText = document.querySelector(".title-text .login");
+ const loginForm = document.querySelector("form.login");
+ const loginBtn = document.querySelector("label.login");
+ const signupBtn = document.querySelector("label.signup");
+ const signupLink = document.querySelector("form .signup-link a");
+ signupBtn.onclick = (()=>{
+   loginForm.style.marginLeft = "-50%";
+   loginText.style.marginLeft = "-50%";
+ });
+ loginBtn.onclick = (()=>{
+   loginForm.style.marginLeft = "0%";
+   loginText.style.marginLeft = "0%";
+ });
+ signupLink.onclick = (()=>{
+   signupBtn.click();
+   return false;
+ });
+</script>
+</div>
+{% endblock %}

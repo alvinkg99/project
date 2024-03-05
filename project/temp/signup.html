@@ -1,0 +1,79 @@
+{%extends 'base.html'%}
+{% block content %}
+{%load static%}
+<div>
+  <section class="about_section layout_padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="detail-box">
+            <div class="heading_container"></div>
+            <section class="contact_section layout_padding">
+                <div class="container">
+                  <h2>
+                    sign-up
+                  </h2>
+                  <div class="">
+                    <div class="row">
+                      <div class="col-md-6 mx-auto">
+                        <form action="">
+                          <div class="contact_form-container">
+                            <div>
+                                <div>
+                                    <input type="text" placeholder="name">
+                                </div>
+                                <div>
+                                    <input type="text" placeholder="mobile number">
+                                  </div>
+                              <div>
+                                <input type="email" placeholder="Email">
+                              </div>
+                              <div class="">
+                                <input type="password" placeholder="password" class="password">
+                                <input type="password" placeholder="confirm password" class="password">
+                              </div>
+                              {% for msg in messages %}
+                                {% if 'myusr' in msg.tags %}
+                              <div class="group" style="text-align: center;">
+                                <label for="pass" class="label" style="color: red;">{{msg}}</label>
+                              </div>
+                                  {% elif 'mymail' in msg.tags %}
+                              <div class="group" style="text-align: center;">
+                                <label for="pass" class="label" style="color: red;">{{msg}}</label>
+                              </div>
+                              {% elif 'passnotmatch' in msg.tags %}
+                              <div class="group" style="text-align: center;">
+                                <label for="pass" class="label" style="color: red;">{{msg}}</label>
+                              </div>
+                              {% endif %}
+
+                              {% endfor %}
+                              <div class="mt-5 d-flex justify-content-center ">
+                                <button type="submit">
+                                  login
+                                </button>
+                              </div>
+                            </div>
+            
+                          </div>
+            
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            
+           
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="img-box">
+            <img src="{% static 'images/about-img.png'%}" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}

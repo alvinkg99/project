@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{%load static%}
+<link rel="stylesheet" href="{% static 'admin/css/templatemo-style.css'%}">
+
+
+                    <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
+                        <h2 class="tm-block-title">My Orders</h2>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">TRACKING NO</th>
+                                    <th scope="col">STATUS</th>
+                                    <th scope="col">EMAIL</th>
+                                    <th scope="col">LOCATION</th>
+                                    <th scope="col">AMOUNT</th>
+                                    <th scope="col">PAYMENT MODE</th>
+                                    <th scope="col">START DATE</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for i in l %}
+                                <tr>
+                                    <td>{{i.tracking_no}}</td>
+                                    <td><b>{{i.status}}</b></td>
+                                    <td><b>{{i.email}}</b></td>
+                                    <td><b>{{i.city}}</b></td>
+                                    <td><b>{{i.total_price}}</b></td>
+                                    <td><b>{{i.payment_mode}}</b></td>
+                                    <td>{{i.created_at}}</td>
+                                </tr>
+                                {% endfor %}
+
+                                <!-- <td>
+                                    <div class="tm-status-circle moving">
+                                    </div>Moving
+                                </td>
+
+                                <td>
+                                    <div class="tm-status-circle pending">
+                                    </div>Pending
+                                </td>
+
+                                <td>
+                                    <div class="tm-status-circle cancelled">
+                                    </div>Cancelled
+                                </td> -->
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+    
+                
+{% endblock %}

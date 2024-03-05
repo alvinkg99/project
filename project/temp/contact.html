@@ -1,0 +1,51 @@
+{%extends 'base.html'%}
+{% block content %}
+{%load static%}
+
+  <!-- contact section -->
+
+  <section class="contact_section layout_padding">
+    <div class="container">
+      <h2>
+        Request A call back
+      </h2>
+      <div class="">
+        <div class="row">
+          <div class="col-md-6 mx-auto">
+            <form action="" method="post">
+              {% csrf_token %}
+
+              <div class="contact_form-container">
+                <div>
+                  <div>
+                    <input type="text" placeholder="Name" name="name">
+                  </div>
+                  <div>
+                    <input type="text" placeholder="Phone Number" name="mob">
+                  </div>
+                  <div>
+                    <input type="email" placeholder="Email" name="email">
+                  </div>
+                  <div class="">
+                    <input type="text" placeholder="Message" class="message_input" name="message">
+                  </div>
+                  <div class="mt-5 d-flex justify-content-center ">
+                    <button type="submit">
+                      Send
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- end contact section -->
+
+  {% endblock %}

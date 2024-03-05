@@ -1,0 +1,36 @@
+{%extends 'base.html'%}
+{% block content %}
+{%load static%}
+<link rel="stylesheet" href="{% static 'css/login.css'%}">
+<div>
+<div class="wrapper">
+  <div class="title-text">
+     <div class="title signup">
+      <h1>Password reset complete</h1>
+      <h6>Your password has been set. You may go ahead and log in now.</h6>
+     </div>
+  </div>
+ 
+  <a href="{% url 'login' %}">login</a>
+</div>
+<script>
+ const loginText = document.querySelector(".title-text .login");
+ const loginForm = document.querySelector("form.login");
+ const loginBtn = document.querySelector("label.login");
+ const signupBtn = document.querySelector("label.signup");
+ const signupLink = document.querySelector("form .signup-link a");
+ signupBtn.onclick = (()=>{
+   loginForm.style.marginLeft = "-50%";
+   loginText.style.marginLeft = "-50%";
+ });
+ loginBtn.onclick = (()=>{
+   loginForm.style.marginLeft = "0%";
+   loginText.style.marginLeft = "0%";
+ });
+ signupLink.onclick = (()=>{
+   signupBtn.click();
+   return false;
+ });
+</script>
+</div>
+{% endblock %}
